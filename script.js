@@ -23,10 +23,10 @@ DomElement.prototype.create = function () {
         newElem = document.createElement('p');        
         newElem.setAttribute('id', temp2)
     }
-    this.height = prompt('Введите высоту', '100px');
-    this.width = prompt('Введите ширину', '100px');
+    this.height = prompt('Введите высоту', '100') + 'px';
+    this.width = prompt('Введите ширину', '100') + 'px';
     this.bg = prompt('Введите цвет фона', 'green');
-    this.fontSize = prompt('Введите размер шрифта', '25px');
+    this.fontSize = prompt('Введите размер шрифта', '25') + 'px';
     body.prepend(newElem);
     newElem.textContent = prompt('Ведите текст', 'Test Text');
     newElem.style.height = this.height;
@@ -37,4 +37,7 @@ DomElement.prototype.create = function () {
 
 let element = new DomElement;
 element.create();
+
+let element2 = new DomElement;
+element2.create();
 
