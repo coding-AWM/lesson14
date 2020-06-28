@@ -1,6 +1,7 @@
 'use strict'
 
 let body = document.querySelector('body');
+let selectorS = document.getElementById('selector');
 
 let DomElement = function () {
     this.selector = 0;
@@ -11,7 +12,8 @@ let DomElement = function () {
 }
 
 DomElement.prototype.create = function () {
-    this.selector = prompt('если вам нужно создать класс, то начните писать название класса с точки, если же нужен параграф с id?  то начните писать название id с решетки', '.Hello')
+    this.selector = selectorS.value;
+    //prompt('если вам нужно создать класс, то начните писать название класса с точки, если же нужен параграф с id?  то начните писать название id с решетки', '.Hello')
     let temp = this.selector[0];
     let temp2 = this.selector.slice(1)
     let newElem;
