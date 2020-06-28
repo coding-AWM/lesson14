@@ -11,28 +11,30 @@ let DomElement = function () {
 }
 
 DomElement.prototype.create = function () {
-    this.selector = prompt('если вам нужно создать класс, то начните писать название класса с точки, если же нужен параграф с id?  то начните писать название id с решетки','.Hello')
-    let temp = this.selector[0];  
-    let temp2 = this.selector.slice(1) 
-    let newElem = this.selector; 
-    
+    this.selector = prompt('если вам нужно создать класс, то начните писать название класса с точки, если же нужен параграф с id?  то начните писать название id с решетки', '.Hello')
+    let temp = this.selector[0];
+    let temp2 = this.selector.slice(1)
+    let newElem = this.selector;
+
     if (temp === '.') {
         newElem = document.createElement('div');
-        newElem.setAttribute('class', temp2)   
+        newElem.setAttribute('class', temp2)
     } else if (temp === '#') {
-        newElem = document.createElement('p');        
+        newElem = document.createElement('p');
         newElem.setAttribute('id', temp2)
     }
-    this.height = prompt('Введите высоту', '100') + 'px';
-    this.width = prompt('Введите ширину', '100') + 'px';
+    this.height = prompt('Введите высоту', '100');
+    this.width = prompt('Введите ширину', '100');
     this.bg = prompt('Введите цвет фона', 'green');
-    this.fontSize = prompt('Введите размер шрифта', '25') + 'px';
+    this.fontSize = prompt('Введите размер шрифта', '25');
     body.prepend(newElem);
+    newElem.style.cssText = `color: red;
+    background-color: ${this.bg};
+    width: ${this.width}px;
+    height: ${this.height}px;
+    font-size: ${this.fontSize}px
+    `;
     newElem.textContent = prompt('Ведите текст', 'Test Text');
-    newElem.style.height = this.height;
-    newElem.style.width = this.width;
-    newElem.style.backgroundColor = this.bg;
-    newElem.style.fontSize = this.fontSize;
 }
 
 let element = new DomElement;
@@ -40,4 +42,3 @@ element.create();
 
 let element2 = new DomElement;
 element2.create();
-
