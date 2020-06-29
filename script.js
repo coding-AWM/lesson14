@@ -2,6 +2,13 @@
 
 let body = document.querySelector('body');
 let selectorS = document.getElementById('selector');
+let widthS = document.getElementById('width');
+let heightS = document.getElementById('height');
+let bgS = document.getElementById('background');
+let fontSizeS = document.getElementById('fontSize');
+let textS = document.getElementById('text');
+
+let button = document.querySelector('button');
 
 let DomElement = function () {
     this.selector = 0;
@@ -11,38 +18,36 @@ let DomElement = function () {
     this.fontSize = 0;
 }
 
-DomElement.prototype.create = function () {
+DomElement.prototype.start = function () {
     this.selector = selectorS.value;
-    //prompt('если вам нужно создать класс, то начните писать название класса с точки, если же нужен параграф с id?  то начните писать название id с решетки', '.Hello')
+    this.width = widthS.value;
+    this.height = heightS.value;
+    this.bg = bgS.value;
+    this.fontSize = fontSizeS.value;
+
     let temp = this.selector[0];
-    let temp2 = this.selector.slice(1)
+    let temp2 = this.selector.slice(1);
     let newElem;
 
     if (temp === '.') {
         newElem = document.createElement('div');
-        newElem.setAttribute('class', temp2)
+        newElem.setAttribute('class', temp2);
     } else if (temp === '#') {
         newElem = document.createElement('p');
-        newElem.setAttribute('id', temp2)
+        newElem.setAttribute('id', temp2);
     }
 
-    this.height = prompt('Введите высоту', '100');
-    this.width = prompt('Введите ширину', '100');
-    this.bg = prompt('Введите цвет фона', 'green');
-    this.fontSize = prompt('Введите размер шрифта', '25');
-
-    body.prepend(newElem);
     newElem.style.cssText = `color: red;
-    background-color: ${this.bg};
-    width: ${this.width}px;
-    height: ${this.height}px;
-    font-size: ${this.fontSize}px
-    `;
-    newElem.textContent = prompt('Ведите текст', 'Test Text');
+        background-color: ${this.bg};
+        width: ${this.width}px;
+        height: ${this.height}px;
+        font-size: ${this.fontSize}px
+        `;
+
+    newElem.textContent = textS.value;
+    body.append(newElem);
+
 }
 
 let element = new DomElement;
-element.create();
-
-// let element2 = new DomElement;
-// element2.create();
+button.addEventListener('click', element.start);
